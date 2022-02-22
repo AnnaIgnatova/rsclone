@@ -86,11 +86,6 @@ const Profile = () => {
     });
   };
 
-  const changeImageUserHandler = async () => {
-    try {
-    } catch (error) {}
-  };
-
   const [form] = Form.useForm();
 
   return (
@@ -137,7 +132,7 @@ const Profile = () => {
                   placeholder={user?.phone}
                 />
               </div>
-              <div className="info-block">
+              <div className="info-block last-info-block">
                 <span className="info-name">E-mail</span>
                 <input
                   type="text"
@@ -250,7 +245,7 @@ const Profile = () => {
             {user?.favoriteHotels?.length === 0
               ? "Вы еще не добавили отели в избранное"
               : user?.favoriteHotels?.map((id) => {
-                  return <FavoriteHotelCard data={id} />;
+                  return <FavoriteHotelCard data={id} key={id} />;
                 })}
           </div>
         </div>

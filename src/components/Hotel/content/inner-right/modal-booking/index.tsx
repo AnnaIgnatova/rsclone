@@ -23,8 +23,6 @@ const ModalForm = (props: any) => {
             Закрыть
           </Button>,
         ]}
-        // cancelText="Отмена"
-        // okText="Забронировать"
       >
         <FormBooking data={props.data} />
       </Modal>

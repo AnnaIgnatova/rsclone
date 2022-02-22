@@ -1,5 +1,6 @@
-import { Spin } from "antd";
+import { Card, Spin } from "antd";
 import { useEffect, useState } from "react";
+const { Meta } = Card;
 
 export const FavoriteHotelCard = (props: any) => {
   const [data, setData] = useState();
@@ -32,7 +33,7 @@ export const FavoriteHotelCard = (props: any) => {
       abortController.abort();
     };
   }, [id]);
-
+  console.log(data);
   const hotelInfo: any = data;
 
   if (hotelInfo === undefined)
@@ -43,20 +44,19 @@ export const FavoriteHotelCard = (props: any) => {
     );
 
   return (
-    <div className="card">
-      <div className="card__score">{hotelInfo.review_score}</div>
-      <div
-        className="card__img"
-        style={{
-          backgroundImage: `url(https://cdn-icons-png.flaticon.com/512/393/393205.png)`,
-        }}
-      ></div>
-      <div className="card__info">
-        <div className="card__info-name">{hotelInfo.name}</div>
-        <div className="card__info-adress">
-          {hotelInfo.address}, <i>{hotelInfo.city}</i>
-        </div>
-      </div>
-    </div>
+    <>
+      {hotelInfo.city && (
+        <Card
+          className="favorite-hotel-card"
+          hoverable
+          cover={<img alt="example" src={hotelInfo.entrance_photo_url} />}
+        >
+          <Meta
+            title={hotelInfo.name}
+            description={`${hotelInfo.address}, ${hotelInfo.city}`}
+          />
+        </Card>
+      )}
+    </>
   );
 };

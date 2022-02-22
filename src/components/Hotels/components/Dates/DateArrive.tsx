@@ -24,8 +24,7 @@ export const getDateArriveStr = () => {
 };
 
 export const DateArriveComponent: React.FC<DateArriveProps> = (props) => {
-  const { checkInDate } = props;
-  props.getCheckInDate(getDateArriveStr());
+  const { checkInDate, getCheckInDate } = props;
   return (
     <>
       <span className="filter-title">дата заезда</span>
@@ -40,7 +39,7 @@ export const DateArriveComponent: React.FC<DateArriveProps> = (props) => {
         placeholder="Выбрать дату"
         disabledDate={disabledDateArrive}
         onChange={(date, dateString) => {
-          props.getCheckInDate(dateString);
+          getCheckInDate(dateString);
         }}
       />
     </>
