@@ -14,7 +14,6 @@ const Commentary = () => {
     },
   ]);
   const { id } = useParams();
-  console.log(data);
   useEffect(() => {
     const fetchComment = async () => {
       try {

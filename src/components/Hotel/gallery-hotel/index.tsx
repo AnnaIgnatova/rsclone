@@ -53,7 +53,7 @@ const Collage = ({ idHotel }: CollageInterface) => {
     };
   }, [idHotel]);
 
-  localStorage.setItem("imgHotel", imageData[0].url_max);
+  localStorage.setItem("imgHotel", imageData[0].url_1440);
 
   return (
     <div className="collage">
