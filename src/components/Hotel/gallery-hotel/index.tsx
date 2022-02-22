@@ -53,6 +53,8 @@ const Collage = ({ idHotel }: CollageInterface) => {
     };
   }, [idHotel]);
 
+  localStorage.setItem("imgHotel", imageData[0].url_max);
+
   return (
     <div className="collage">
       <Carousel autoplay className="hotel-slider-imgs">

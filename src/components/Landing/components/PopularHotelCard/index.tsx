@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 const PopularHotelCard = (props: any) => {
-  console.log(props);
   return (
     <Link to={`/hotel/${props.hotel.hotel_id}`}>
       <div className="popular-hotel-card">
