@@ -22,6 +22,7 @@ export const getDateLeaveStr = () => {
 };
 
 export const DateLeaveComponent: React.FC<DateLeaveProps> = (props) => {
+  props.getCheckOutDate(props.checkOutDate || getDateLeaveStr());
   return (
     <>
       <span className="filter-title">дата выезда</span>

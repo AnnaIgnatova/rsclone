@@ -25,6 +25,7 @@ export const getDateArriveStr = () => {
 
 export const DateArriveComponent: React.FC<DateArriveProps> = (props) => {
   const { checkInDate, getCheckInDate } = props;
+  getCheckInDate(checkInDate || getDateArriveStr());
   return (
     <>
       <span className="filter-title">дата заезда</span>
