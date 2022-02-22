@@ -48,6 +48,17 @@ userRouter.delete("/:id", (req, res) => __awaiter(void 0, void 0, void 0, functi
         res.status(500).json({ message: e.message });
     }
 }));
+userRouter.post("/:id/bookHotels", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const id = req.params.id;
+        const { image, name, dateArrival, dateDeparture, days, sum, city, address, adult, child } = req.body;
+        const bookHotel = yield User_1.default.updateOne({ _id: id }, { $push: { bookHotels: { image, name, dateArrival, dateDeparture, days, sum, city, address, adult, child } } });
+        res.status(200).json({ bookHotel });
+    }
+    catch (e) {
+        res.status(500).json({ message: e.message });
+    }
+}));
 userRouter.patch("/:id/favorite", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const id = req.params.id;

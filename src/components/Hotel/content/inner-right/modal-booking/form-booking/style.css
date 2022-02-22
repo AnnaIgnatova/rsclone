@@ -7,3 +7,11 @@
     display: flex;
     justify-content: space-between;
 }
+
+.image-form{
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

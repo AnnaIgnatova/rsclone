@@ -8,7 +8,18 @@ const schema = new mongoose_1.Schema({
     surname: { type: String },
     phone: { type: String },
     favoriteHotels: [{ type: String }],
-    links: [{ type: mongoose_1.Types.ObjectId, ref: 'Link' }]
+    bookHotels: [{
+            image: { type: String },
+            name: { type: String },
+            dateArrival: { type: String },
+            dateDeparture: { type: String },
+            days: { type: String },
+            sum: { type: String },
+            city: { type: String },
+            address: { type: String },
+            adult: { type: String },
+            child: { type: String },
+        }]
 });
 exports.default = (0, mongoose_1.model)('User', schema);
 //# sourceMappingURL=User.js.map
