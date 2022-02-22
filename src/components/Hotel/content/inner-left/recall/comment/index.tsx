@@ -7,14 +7,14 @@ import Item from "antd/lib/list/Item";
 const Commentary = () => {
   const [data, setData] = useState([
     {
-      review_id: 1231231,
+      author: { name: "user" },
       pros: "qweqwe",
       cons: "qweqwe",
       avatar: "https://joeschmoe.io/api/v1/random",
     },
   ]);
   const { id } = useParams();
-
+  console.log(data);
   useEffect(() => {
     const fetchComment = async () => {
       try {
@@ -56,7 +56,7 @@ const Commentary = () => {
       renderItem={(item) => (
         <li>
           <Comment
-            author={item.review_id}
+            author={item.author.name}
             avatar={item.avatar}
             content={item.pros + " " + item.cons}
           />

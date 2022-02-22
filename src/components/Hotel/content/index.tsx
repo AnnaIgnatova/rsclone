@@ -13,17 +13,15 @@ const ContentHotel = (props: any) => {
 
   return (
     <Suspense fallback={null}>
-      <div className="container">
-        <HotelName name={props.data.name} />
+      <HotelName name={props.data.name} />
 
-        <div className="container-room">
-          <InnerLeft
-            score={props.data.review_score}
-            scoreText={props.data.review_score_word}
-            idHotel={props.data.hotel_id}
-          />
-          <InnerRight data={props.data} />
-        </div>
+      <div className="container-room">
+        <InnerLeft
+          score={props.data.review_score}
+          scoreText={props.data.review_score_word}
+          idHotel={props.data.hotel_id}
+        />
+        <InnerRight data={props.data} />
       </div>
     </Suspense>
   );
