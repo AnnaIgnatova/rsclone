@@ -4,13 +4,14 @@ const { Meta } = Card;
 
 export const FavoriteHotelCard = (props: any) => {
   const [data, setData] = useState();
-  const id = props.data;
+  const hotelId = props.id;
+  const image = props.image;
   useEffect(() => {
     const abortController = new AbortController();
     const fetchFavoriteHotelData = async () => {
       try {
         const response = await fetch(
-          `https://booking-com.p.rapidapi.com/v1/hotels/data?locale=ru&hotel_id=${id}`,
+          `https://booking-com.p.rapidapi.com/v1/hotels/data?locale=ru&hotel_id=${hotelId}`,
           {
             method: "GET",
             signal: abortController.signal,
@@ -32,8 +33,7 @@ export const FavoriteHotelCard = (props: any) => {
     return () => {
       abortController.abort();
     };
-  }, [id]);
-  console.log(data);
+  }, [hotelId]);
   const hotelInfo: any = data;
 
   if (hotelInfo === undefined)
@@ -49,7 +49,7 @@ export const FavoriteHotelCard = (props: any) => {
         <Card
           className="favorite-hotel-card"
           hoverable
-          cover={<img alt="example" src={hotelInfo.entrance_photo_url} />}
+          cover={<img alt="example" src={image} />}
         >
           <Meta
             title={hotelInfo.name}
