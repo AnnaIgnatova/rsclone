@@ -15,7 +15,7 @@ import {
 import HotelCard from "./components/HotelCard";
 import { filterComponents } from "./constants/filterParams";
 import "./style.css";
-import { Button, Input, Pagination } from "antd";
+import { Button, Input, Pagination, Spin } from "antd";
 
 interface StateProps {
   hotels: any[];
@@ -93,6 +93,8 @@ const HotelsComponent: React.FC<HotelsComponentProps> = (props) => {
       rooms: hotelsParams.rooms,
     });
   }, [page, hotelsParams]);
+
+  if (hotels === []) return <Spin></Spin>;
 
   return (
     <div className="hotels">
