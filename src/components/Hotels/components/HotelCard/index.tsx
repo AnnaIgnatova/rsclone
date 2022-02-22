@@ -36,8 +36,6 @@ const HotelCard = (props: any) => {
     }
   };
 
-  if (!user?.favoriteHotels) return <Spin></Spin>;
-
   user?.favoriteHotels?.map((hotel) => {
     if (hotel.hotelId == props.data.hotel_id) favorite = true;
   });

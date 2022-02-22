@@ -2,18 +2,26 @@ import { Card } from "antd";
 
 const { Meta } = Card;
 
-export const BookingCard = (props: any) => (
-  <Card
-    title="Hotel Park Inn"
-    hoverable
-    style={{ width: 340 }}
-    cover={
-      <img
-        alt="example"
-        src="https://www.ggrasia.com/wp-content/uploads/2015/05/JW-Marriot-hotel-room-Galaxy-Macau-Phase-2-e1432637852679.jpg"
+export const BookingCard = (props: any) => {
+  const hotel = props.data;
+
+  return (
+    <Card
+      title={hotel.name}
+      hoverable
+      style={{ width: 340 }}
+      cover={<img alt="hotel" src={hotel.image} />}
+    >
+      <Meta title={hotel.address} description={hotel.city} />
+      <Meta
+        title={`Посетители: ${hotel.adult} взрослых и ${hotel.child} детей `}
       />
-    }
-  >
-    <Meta title="20 дек. 2018 - 13 янв. 2019" description="14 000 ₽" />
-  </Card>
-);
+      <Meta
+        title={`${hotel.dataArrival || "-"} – ${hotel.dataDeparture || "-"} (${
+          hotel.days || "-"
+        } д.)`}
+        description={`Итого: ${hotel.sum || "0"}`}
+      />
+    </Card>
+  );
+};
