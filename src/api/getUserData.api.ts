@@ -4,14 +4,8 @@ export interface GetUserDataResponse {
   surname?: string;
   phone?: string;
   email?: string;
-  favoriteHotels?: FavoriteHotels[];
+  favoriteHotels?: string[];
   links?: [];
-  bookHotels?: string[];
-}
-
-export interface FavoriteHotels {
-  hotelId: string;
-  image: string;
 }
 
 export const getUserDataApi = async () => {

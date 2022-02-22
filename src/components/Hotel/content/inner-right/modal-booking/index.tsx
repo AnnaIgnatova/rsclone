@@ -12,17 +12,14 @@ const ModalForm = (props: any) => {
         Забронировать номер
       </Button>
       <Modal
+        className="book-modal-form"
         title="Бронирование отеля"
         centered
         visible={visible}
         onOk={() => setVisible(false)}
         onCancel={() => setVisible(false)}
         width={850}
-        footer={[
-          <Button key="back" onClick={() => setVisible(false)}>
-            Закрыть
-          </Button>,
-        ]}
+        footer=""
       >
         <FormBooking data={props.data} />
       </Modal>

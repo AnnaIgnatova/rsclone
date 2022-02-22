@@ -11,10 +11,10 @@ const InnerRight = (props: any) => {
   return (
     <Suspense fallback={null}>
       <div className="inner-right">
-        <MapContainer
+        {/* <MapContainer
           lng={props.data.location.longitude}
           lat={props.data.location.latitude}
-        />
+        /> */}
         <ModalForm data={props.data} />
       </div>
     </Suspense>

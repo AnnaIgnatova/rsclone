@@ -57,22 +57,18 @@ const FormBooking = (props: any) => {
       const user = localStorage.getItem("UserData");
       if (!user) return;
       const userId = JSON.parse(user).userId;
-      await request(
-        `https://rsclone-server.herokuapp.com/user/${userId}/bookHotels`,
-        "POST",
-        {
-          image: imageHotel,
-          name: data.name,
-          dateArrival: checkInDate,
-          dateDeparture: checkOutDate,
-          days: valueDays,
-          sum: total,
-          city: data.city,
-          address: data.address,
-          adult: filterData.adultsNum,
-          child: filterData.childNum,
-        }
-      );
+      await request(`http://localhost:8080/user/${userId}/bookHotels`, "POST", {
+        image: imageHotel,
+        name: data.name,
+        dateArrival: checkInDate,
+        dateDeparture: checkOutDate,
+        days: valueDays,
+        sum: total,
+        city: data.city,
+        address: data.address,
+        adult: filterData.adultsNum,
+        child: filterData.childNum,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -90,54 +86,54 @@ const FormBooking = (props: any) => {
         <div
           className="image-form"
           style={{ backgroundImage: `url(${imageHotel})` }}
-        >
-          {" "}
-        </div>
+        ></div>
+
+        {/* <h2 className="form-header__right">{priceDay}₽ в сутки</h2> */}
+      </div>
+      <div className="book-detail-description">
         <h2 className="form-header__left">
           {data.name} <b>{data.city}</b>
         </h2>
-        <h2 className="form-header__right">{priceDay}₽ в сутки</h2>
-      </div>
-      <div className="date-booking">
-        in: {filterData.checkInDate} <br />
-        out: {filterData.checkOutDate}
-      </div>
-      <Form.Item>
-        <div className="price-container">
-          <div className="price">
-            стоистость:
-            {priceDay}₽ x {valueDays} суток x {filterData.rooms} комнаты
+        <div className="date-booking">
+          Дата заезда: {filterData.checkInDate} <br />
+          Дата выезда: {filterData.checkOutDate}
+        </div>
+        <Form.Item>
+          <div className="price-container">
+            <div className="price">
+              {`Стоимость: ${priceDay}₽ x ${valueDays} суток x ${filterData.rooms} комнаты`}
+            </div>
+            <div className="price-total">{allSum}₽</div>
           </div>
-          <div className="price-total">{allSum}₽</div>
-        </div>
-      </Form.Item>
-      взрослые; {filterData.adultsNum} <br></br>
-      Дети: {filterData.childNum} <br></br>
-      <Form.Item>
-        <div className="price-container">
-          <div className="price-discount">Сбор за услуги: скидка 5%</div>
-          <div className="discount-total">
-            -{(priceDay * valueDays * 0.05).toFixed(2)}₽
+        </Form.Item>
+        Взрослые: {filterData.adultsNum} <br></br>
+        Дети: {filterData.childNum} <br></br>
+        <Form.Item>
+          <div className="price-container">
+            <div className="price-discount">Сбор за услуги: скидка 5%</div>
+            <div className="discount-total">
+              -{(priceDay * valueDays * 0.05).toFixed(2)}₽
+            </div>
           </div>
-        </div>
-      </Form.Item>
-      <Form.Item>
-        <div className="price-container">
-          <div className="price-discount">Сбор за дополнительные услуги</div>
-          <div className="discount-total">{extraService}₽</div>
-        </div>
-      </Form.Item>
-      <Form.Item>
-        <div className="price-container">
-          <h3 className="price-discount">Итого</h3>
-          <h3 className="discount-total">{total}₽</h3>
-        </div>
-      </Form.Item>
-      <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit" onClick={bookHotel}>
-          Забронировать
-        </Button>
-      </Form.Item>
+        </Form.Item>
+        <Form.Item>
+          <div className="price-container">
+            <div className="price-discount">Сбор за дополнительные услуги</div>
+            <div className="discount-total">{extraService}₽</div>
+          </div>
+        </Form.Item>
+        <Form.Item>
+          <div className="price-container">
+            <h3 className="price-discount">Итого</h3>
+            <h3 className="discount-total">{total}₽</h3>
+          </div>
+        </Form.Item>
+        <Form.Item {...tailFormItemLayout}>
+          <Button type="primary" htmlType="submit" onClick={bookHotel}>
+            Забронировать
+          </Button>
+        </Form.Item>
+      </div>
     </Form>
   );
 };
