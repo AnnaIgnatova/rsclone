@@ -74,15 +74,15 @@ userRouter.patch("/:id/favorite", async (req: Request, res: Response) => {
       res.status(404).json({ message: "user is not found" });
     }
 
-    const { hotelId } = req.body;
-    const favoriteHotelData = await User.find({ _id: id, favoriteHotels: hotelId });
+    const { hotelId, image } = req.body;
+    const favoriteHotelData = await User.find({ _id: id, favoriteHotels: {hotelId }});
 
     let favoriteHotel: any;
 
     if (favoriteHotelData.length) {
-      favoriteHotel = await User.updateOne({ _id: id }, { $pull: { favoriteHotels: hotelId } })
+      favoriteHotel = await User.updateOne({ _id: id }, { $pull: { favoriteHotels:{hotelId, image }} })
     } else {
-      favoriteHotel = await User.updateOne({ _id: id }, { $push: { favoriteHotels: hotelId } })
+      favoriteHotel = await User.updateOne({ _id: id }, { $push: { favoriteHotels: {hotelId, image}} })
     }
 
     res.status(200).json(favoriteHotelData);

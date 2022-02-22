@@ -57,18 +57,22 @@ const FormBooking = (props: any) => {
       const user = localStorage.getItem("UserData");
       if (!user) return;
       const userId = JSON.parse(user).userId;
-      await request(`http://localhost:8080/user/${userId}/bookHotels`, "POST", {
-        image: imageHotel,
-        name: data.name,
-        dateArrival: checkInDate,
-        dateDeparture: checkOutDate,
-        days: valueDays,
-        sum: total,
-        city: data.city,
-        address: data.address,
-        adult: filterData.adultsNum,
-        child: filterData.childNum,
-      });
+      await request(
+        `https://rsclone-server.herokuapp.com/user/${userId}/bookHotels`,
+        "POST",
+        {
+          image: imageHotel,
+          name: data.name,
+          dateArrival: checkInDate,
+          dateDeparture: checkOutDate,
+          days: valueDays,
+          sum: total,
+          city: data.city,
+          address: data.address,
+          adult: filterData.adultsNum,
+          child: filterData.childNum,
+        }
+      );
     } catch (error) {
       console.log(error);
     }

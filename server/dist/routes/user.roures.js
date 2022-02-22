@@ -66,14 +66,14 @@ userRouter.patch("/:id/favorite", (req, res) => __awaiter(void 0, void 0, void 0
         if (!userExist) {
             res.status(404).json({ message: "user is not found" });
         }
-        const { hotelId } = req.body;
-        const favoriteHotelData = yield User_1.default.find({ _id: id, favoriteHotels: hotelId });
+        const { hotelId, image } = req.body;
+        const favoriteHotelData = yield User_1.default.find({ _id: id, favoriteHotels: { hotelId } });
         let favoriteHotel;
         if (favoriteHotelData.length) {
-            favoriteHotel = yield User_1.default.updateOne({ _id: id }, { $pull: { favoriteHotels: hotelId } });
+            favoriteHotel = yield User_1.default.updateOne({ _id: id }, { $pull: { favoriteHotels: { hotelId, image } } });
         }
         else {
-            favoriteHotel = yield User_1.default.updateOne({ _id: id }, { $push: { favoriteHotels: hotelId } });
+            favoriteHotel = yield User_1.default.updateOne({ _id: id }, { $push: { favoriteHotels: { hotelId, image } } });
         }
         res.status(200).json(favoriteHotelData);
     }

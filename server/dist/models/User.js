@@ -7,7 +7,10 @@ const schema = new mongoose_1.Schema({
     name: { type: String, required: true },
     surname: { type: String },
     phone: { type: String },
-    favoriteHotels: [{ type: String }],
+    favoriteHotels: [{
+            hotelId: { type: String },
+            image: { type: String }
+        }],
     bookHotels: [{
             image: { type: String },
             name: { type: String },

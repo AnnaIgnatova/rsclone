@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import { Button, Rate } from "antd";
+import { Button, Rate, Spin } from "antd";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -24,10 +24,11 @@ const HotelCard = (props: any) => {
   const favoriteHandler = async () => {
     try {
       const hotelId = props.data.hotel_id.toString();
+      const image = props.data.max_1440_photo_url;
       await request(
         `https://rsclone-server.herokuapp.com/user/${user?._id}/favorite`,
         "PATCH",
-        { hotelId }
+        { hotelId, image }
       );
       dispatch(getUserData());
     } catch (error) {
@@ -35,8 +36,10 @@ const HotelCard = (props: any) => {
     }
   };
 
+  if (!user?.favoriteHotels) return <Spin></Spin>;
+
   user?.favoriteHotels?.map((hotel) => {
-    if (hotel == props.data.hotel_id) favorite = true;
+    if (hotel.hotelId == props.data.hotel_id) favorite = true;
   });
 
   return (
