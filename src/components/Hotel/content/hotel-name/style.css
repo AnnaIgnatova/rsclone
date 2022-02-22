@@ -1,4 +1,9 @@
 .hotel-title {
-    font-size: 32px;
-    font-weight: 700;
+  font-size: 52px;
+  font-weight: 700;
+  margin-bottom: 60px;
+  position: absolute;
+  top: 600px;
+  color: #fff;
+  left: 200px;
 }

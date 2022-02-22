@@ -2,7 +2,7 @@ import ContentHotel from "./content";
 import Collage from "./gallery-hotel";
 import "./style.css";
 import { Suspense, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { AnyIfEmpty } from "react-redux";
 
 const Hotel = () => {
@@ -48,12 +48,15 @@ const Hotel = () => {
   }, [id]);
 
   return (
-    <>
+    <div className="container hotel-container">
+      <Link to="/hotels" className="compare-hotels-back">
+        Вернуться к отелям
+      </Link>
       <Collage idHotel={id ? id : "0"} />
       <Suspense fallback={null}>
         <ContentHotel data={data} />
       </Suspense>
-    </>
+    </div>
   );
 };
 

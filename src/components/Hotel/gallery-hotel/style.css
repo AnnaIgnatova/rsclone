@@ -1,27 +1,14 @@
 .collage {
-    display: flex;
-    height: 500px;
-    margin-bottom: 50px;
+  filter: brightness(0.5);
+  margin-bottom: 150px;
+}
+.collage .ant-carousel {
+  height: 600px;
+  margin: auto;
+  margin-bottom: 30px;
 }
 
-.collage-right {
-    width: 65%;
-}
-
-.collage-left {
-    width: 35%;
-}
-
-.collage-img {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.collage-img_right {
-    height: 100%;
-}
-
-.collage-img_left {
-    height: 50%;
+.hotel-slider-img {
+  object-fit: cover;
+  height: 600px;
 }

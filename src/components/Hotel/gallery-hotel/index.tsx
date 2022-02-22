@@ -1,6 +1,7 @@
 import ImageHotel from "./image-hotel";
 import { useEffect, useState } from "react";
 import "./style.css";
+import { Carousel } from "antd";
 
 interface CollageInterface {
   idHotel: string;
@@ -10,11 +11,11 @@ const Collage = ({ idHotel }: CollageInterface) => {
   const testURL =
     "https://thumbs.gfycat.com/PotableEmbarrassedFrenchbulldog-max-1mb.gif";
   const [imageData, setImageData] = useState([
-    { url_max: testURL },
-    { url_max: testURL },
-    { url_max: testURL },
-    { url_max: testURL },
-    { url_max: testURL },
+    { url_1440: testURL },
+    { url_1440: testURL },
+    { url_1440: testURL },
+    { url_1440: testURL },
+    { url_1440: testURL },
   ]);
 
   useEffect(() => {
@@ -54,27 +55,11 @@ const Collage = ({ idHotel }: CollageInterface) => {
 
   return (
     <div className="collage">
-      <div className="collage-right">
-        <div className="collage-img_right collage-img">
-          <ImageHotel urlPhoto={imageData[0].url_max} />
-        </div>
-      </div>
-      <div className="collage-left">
-        <div className="collage-img_left collage-img">
-          <ImageHotel urlPhoto={imageData[1].url_max} />
-        </div>
-        <div className="collage-img_left collage-img">
-          <ImageHotel urlPhoto={imageData[2].url_max} />
-        </div>
-      </div>
-      <div className="collage-left">
-        <div className="collage-img_left collage-img">
-          <ImageHotel urlPhoto={imageData[3].url_max} />
-        </div>
-        <div className="collage-img_left collage-img">
-          <ImageHotel urlPhoto={imageData[4].url_max} />
-        </div>
-      </div>
+      <Carousel autoplay className="hotel-slider-imgs">
+        {imageData.slice(0, 10).map((img) => (
+          <img src={img.url_1440} className="hotel-slider-img" />
+        ))}
+      </Carousel>
     </div>
   );
 };

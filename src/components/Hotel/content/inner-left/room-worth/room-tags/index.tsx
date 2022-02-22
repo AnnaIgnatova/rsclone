@@ -45,7 +45,9 @@ const TagsWorth = () => {
 
   return (
     <>
-      <Divider orientation="left">Удобства</Divider>
+      <Divider orientation="left" className="hotel-info-title">
+        Удобства
+      </Divider>
       <div className="tags-inner">{result}</div>
     </>
   );
