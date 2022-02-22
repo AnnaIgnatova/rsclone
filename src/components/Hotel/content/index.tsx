@@ -2,31 +2,30 @@ import HotelName from "./hotel-name";
 import InnerLeft from "./inner-left";
 import InnerRight from "./inner-right";
 import "./style.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 
 const ContentHotel = (props: any) => {
   const [name, setItems] = useState("");
 
   useEffect(() => {
-    async function getNameHotel(obj: { hotel_name_trans: any }) {
-      const nameHotel = obj.hotel_name_trans;
-      setItems(nameHotel);
-    }
-    getNameHotel(props.data);
-  });
+    setItems(props.data.name);
+  }, [name, props.data.name]);
 
   return (
-    <div className="container">
-      <HotelName name={name} />
+    <Suspense fallback={null}>
+      <div className="container">
+        <HotelName name={props.data.name} />
 
-      <div className="container-room">
-        <InnerLeft
-          score={props.data.review_score}
-          scoreText={props.data.review_score_word}
-        />
-        <InnerRight />
+        <div className="container-room">
+          <InnerLeft
+            score={props.data.review_score}
+            scoreText={props.data.review_score_word}
+            idHotel={props.data.hotel_id}
+          />
+          <InnerRight data={props.data} />
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 };
 

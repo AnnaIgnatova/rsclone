@@ -74,7 +74,7 @@ const HotelCard = (props: any) => {
         />
         <span>{props.data.review_score_word}</span>
       </div>
-      <Link to="/hotel">
+      <Link to={`/hotel/${props.data.hotel_id}`}>
         <Button className="more-hotel-btn">Подробнее</Button>
       </Link>
       <div

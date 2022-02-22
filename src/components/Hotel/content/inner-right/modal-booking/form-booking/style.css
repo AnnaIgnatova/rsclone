@@ -1,0 +1,9 @@
+.form-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-container {
+    display: flex;
+    justify-content: space-between;
+}

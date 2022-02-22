@@ -11,25 +11,33 @@ interface MapCenter {
 }
 
 const MapContainer = (props: MapCenter) => {
-  const mapContainer: any = useRef("");
-  const map: any = useRef("");
   const [lng] = useState(props.lng);
   const [lat] = useState(props.lat);
-  const [zoom] = useState(16);
+  const [map, setMap] = useState<mapboxgl.Map>();
+  const mapNode = useRef(null);
 
   useEffect(() => {
-    if (map.current) return; // initialize map only once
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
+    const node = mapNode.current;
+    if (typeof window === "undefined" || node === null) return;
+
+    const mapboxMap = new mapboxgl.Map({
+      container: node,
+      accessToken:
+        "pk.eyJ1Ijoic2s4LXBsIiwiYSI6ImNrdnF5MWkzbDAybHMycG05YWtjeGl3MWUifQ.sZhc173ucmr_lRfVw7Ww6w",
       style: "mapbox://styles/mapbox/streets-v11",
       center: [lng, lat],
-      zoom: zoom,
+      zoom: 17,
     });
-  });
 
+    setMap(mapboxMap);
+
+    return () => {
+      mapboxMap.remove();
+    };
+  }, [lat, lng]);
   return (
-    <div>
-      <div ref={mapContainer} className="map-container" />
+    <div className="inner-map">
+      <div ref={mapNode} className="map-container" />
     </div>
   );
 };

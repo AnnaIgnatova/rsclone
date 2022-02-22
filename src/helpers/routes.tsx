@@ -12,7 +12,7 @@ export const useRouter = (isAuthenticated: boolean) => {
     return [
       { path: "/", element: <Landing /> },
       { path: "/hotels", element: <Hotels /> },
-      // { path: "/hotel", element: <Hotel /> },
+      { path: "/hotel/:id", element: <Hotel /> },
       { path: "/profile", element: <Profile /> },
       { path: "/compare-hotels", element: <CompareHotels /> },
       { path: "*", element: <Navigate to="/" /> },
@@ -22,7 +22,7 @@ export const useRouter = (isAuthenticated: boolean) => {
   return [
     { path: "/", element: <Landing /> },
     { path: "/hotels", element: <Hotels /> },
-    // { path: "/hotel", element: <Hotel /> },
+    { path: "/hotel/:id", element: <Hotel /> },
     { path: "/registration", element: <Registration /> },
     { path: "/sign-in", element: <SignIn /> },
     { path: "/compare-hotels", element: <CompareHotels /> },

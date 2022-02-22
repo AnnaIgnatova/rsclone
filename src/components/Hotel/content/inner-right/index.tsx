@@ -1,13 +1,23 @@
-import FormBooking from "./form-booking";
 import "./style.css";
 import MapContainer from "./map-container";
+import ModalForm from "./modal-booking";
+import { Suspense, useEffect, useState } from "react";
 
-const InnerRight = () => {
+const InnerRight = (props: any) => {
+  if (!props.data.location) {
+    return null;
+  }
+
   return (
-    <div className="inner-right">
-      <FormBooking />
-      <MapContainer lng={-71.0815} lat={42.3445} />
-    </div>
+    <Suspense fallback={null}>
+      <div className="inner-right">
+        <MapContainer
+          lng={props.data.location.longitude}
+          lat={props.data.location.latitude}
+        />
+        <ModalForm data={props.data} />
+      </div>
+    </Suspense>
   );
 };
 

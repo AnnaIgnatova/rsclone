@@ -9,7 +9,7 @@ interface HotelNameStr {
 const RoomRating = (props: HotelNameStr) => {
   return (
     <div className="room-rating">
-      <Divider orientation="left">Сведения о номере</Divider>
+      <Divider orientation="left">Рейтинг отеля</Divider>
       <div>
         <div className="plug-rating">
           <Progress

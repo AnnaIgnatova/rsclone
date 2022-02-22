@@ -18,8 +18,8 @@ const App = () => {
       <SettingsContainer>
         <Header />
         <Routes>
-          {routes.map(({ path, element }, index) => (
-            <Route path={path} element={element} key={index}></Route>
+          {routes.map(({ path, ...props }, index) => (
+            <Route path={path} key={index} {...props}></Route>
           ))}
         </Routes>
         <Footer />

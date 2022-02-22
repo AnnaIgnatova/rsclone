@@ -1,3 +1,7 @@
 .ant-tag {
     margin: 8px;
 }
+
+.tags-inner span {
+    margin: 4px;
+}
