@@ -15,7 +15,7 @@ import {
 import HotelCard from "./components/HotelCard";
 import { filterComponents } from "./constants/filterParams";
 import "./style.css";
-import { Button, Input, Pagination } from "antd";
+import { Button, Input, Pagination, Spin } from "antd";
 
 interface StateProps {
   hotels: any[];

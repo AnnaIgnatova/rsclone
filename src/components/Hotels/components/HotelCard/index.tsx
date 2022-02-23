@@ -24,10 +24,11 @@ const HotelCard = (props: any) => {
   const favoriteHandler = async () => {
     try {
       const hotelId = props.data.hotel_id.toString();
+      const image = props.data.max_1440_photo_url;
       await request(
         `https://rsclone-server.herokuapp.com/user/${user?._id}/favorite`,
         "PATCH",
-        { hotelId }
+        { hotelId, image }
       );
       dispatch(getUserData());
     } catch (error) {
@@ -36,7 +37,7 @@ const HotelCard = (props: any) => {
   };
 
   user?.favoriteHotels?.map((hotel) => {
-    if (hotel == props.data.hotel_id) favorite = true;
+    if (hotel.hotelId == props.data.hotel_id) favorite = true;
   });
 
   return (
