@@ -67,7 +67,7 @@ userRouter.patch("/:id/favorite", (req, res) => __awaiter(void 0, void 0, void 0
             res.status(404).json({ message: "user is not found" });
         }
         const { hotelId, image } = req.body;
-        const favoriteHotelData = yield User_1.default.find({ _id: id, favoriteHotels: { hotelId } });
+        const favoriteHotelData = yield User_1.default.find({ _id: id, "favoriteHotels.hotelId": hotelId });
         let favoriteHotel;
         if (favoriteHotelData.length) {
             favoriteHotel = yield User_1.default.updateOne({ _id: id }, { $pull: { favoriteHotels: { hotelId, image } } });
