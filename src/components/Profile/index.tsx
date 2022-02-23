@@ -232,10 +232,10 @@ const Profile = () => {
         <div className="booking-info">
           <span className="info-title">Ваши бронирования:</span>
           <div className="booking-cards-container">
-            {user?.links?.length === 0
+            {user?.bookHotels?.length === 0
               ? "Вы еще не забронировали отель"
-              : user?.links?.map((id) => {
-                  return <BookingCard data={id} />;
+              : user?.bookHotels?.map((hotel) => {
+                  return <BookingCard data={hotel} />;
                 })}
           </div>
         </div>
@@ -244,8 +244,14 @@ const Profile = () => {
           <div className="favorite-hotels-cards">
             {user?.favoriteHotels?.length === 0
               ? "Вы еще не добавили отели в избранное"
-              : user?.favoriteHotels?.map((id) => {
-                  return <FavoriteHotelCard data={id} key={id} />;
+              : user?.favoriteHotels?.map((hotel) => {
+                  return (
+                    <FavoriteHotelCard
+                      id={hotel.hotelId}
+                      image={hotel.image}
+                      key={hotel}
+                    />
+                  );
                 })}
           </div>
         </div>

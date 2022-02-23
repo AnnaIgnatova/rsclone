@@ -94,8 +94,6 @@ const HotelsComponent: React.FC<HotelsComponentProps> = (props) => {
     });
   }, [page, hotelsParams]);
 
-  if (hotels === []) return <Spin></Spin>;
-
   return (
     <div className="hotels">
       <div className="container">
