@@ -98,7 +98,7 @@ const Profile = () => {
               icon={<UserOutlined />}
               style={{ marginBottom: "20px" }}
             />
-            <UploadPhoto />
+            {/* <UploadPhoto /> */}
           </div>
           <div className="user-info">
             <div className="greeting">
