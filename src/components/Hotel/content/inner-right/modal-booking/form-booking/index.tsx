@@ -43,13 +43,15 @@ const FormBooking = (props: any) => {
 
   const imageHotel = localStorage.getItem("imgHotel");
 
-  const priceDay = data.minrate;
-  const valueDays = Math.round(
+  let priceDay = data.minrate;
+  if (!priceDay) priceDay = 0;
+  let valueDays = Math.round(
     (checkOutDate.getTime() - checkInDate.getTime()) / 86400000
   );
+  if (!valueDays) valueDays = 0;
   const discount = priceDay * valueDays * 0.05;
-  const extraService = 450;
   const allSum = priceDay * valueDays * filterData.rooms;
+  const extraService = allSum * 0.1;
   const total = allSum - discount + extraService;
 
   const bookHotel = async () => {

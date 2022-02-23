@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import { Button, Rate } from "antd";
+import { Button, Rate, Spin } from "antd";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
