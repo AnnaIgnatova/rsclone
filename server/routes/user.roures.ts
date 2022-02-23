@@ -75,7 +75,7 @@ userRouter.patch("/:id/favorite", async (req: Request, res: Response) => {
     }
 
     const { hotelId, image } = req.body;
-    const favoriteHotelData = await User.find({ _id: id, favoriteHotels: {hotelId }});
+    const favoriteHotelData = await User.find({ _id: id, "favoriteHotels.hotelId": hotelId});
 
     let favoriteHotel: any;
 
